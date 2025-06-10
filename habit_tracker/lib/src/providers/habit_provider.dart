@@ -23,6 +23,16 @@ class HabitProvider with ChangeNotifier {
     _save();
   }
 
+  void updateHabitName(String id, String newName) {
+    final habit = _habits.firstWhere((h) => h.id == id);
+    _updateHabit(id, habit.copyWith(name: newName));
+  }
+
+  void deleteHabit(String id) {
+    _habits.removeWhere((h) => h.id == id);
+    _save();
+  }
+
   void toggleCompletion(String habitId, DateTime date) {
     final habit = _habits.firstWhere((h) => h.id == habitId);
     final dates = List<DateTime>.from(habit.completedDates);

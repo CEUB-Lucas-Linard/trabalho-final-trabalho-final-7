@@ -9,7 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final habits = context.watch<HabitProvider>().habits;
+    final habitProvider = context.watch<HabitProvider>();
+    final habits = habitProvider.habits;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Seus Hábitos')),
@@ -25,6 +26,23 @@ class HomeScreen extends StatelessWidget {
                 builder: (_) => HabitDetailScreen(habitId: habit.id),
               ),
             ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditHabitDialog(context, habit.id, habit.name);
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () {
+                    _showDeleteConfirmationDialog(context, habit.id, habit.name);
+                  },
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -35,6 +53,67 @@ class HomeScreen extends StatelessWidget {
         ),
         child: const Icon(Icons.add),
       ),
+    );
+  }
+
+  void _showEditHabitDialog(BuildContext context, String habitId, String currentName) {
+    final TextEditingController controller = TextEditingController(text: currentName);
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Editar Hábito'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(labelText: 'Novo nome do hábito'),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Salvar'),
+              onPressed: () {
+                final newName = controller.text.trim();
+                if (newName.isNotEmpty) {
+                  context.read<HabitProvider>().updateHabitName(habitId, newName);
+                  Navigator.of(context).pop();
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showDeleteConfirmationDialog(BuildContext context, String habitId, String habitName) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirmar Exclusão'),
+          content: Text('Tem certeza que deseja excluir o hábito "$habitName"?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Excluir'),
+              onPressed: () {
+                context.read<HabitProvider>().deleteHabit(habitId);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
