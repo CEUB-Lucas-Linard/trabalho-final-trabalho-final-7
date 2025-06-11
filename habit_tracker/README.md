@@ -8,6 +8,7 @@
 4. [Arquitetura e Estrutura de Pastas](#arquitetura-e-estrutura-de-pastas)
 5. [Instalação e Execução Local](#instalação-e-execução-local)
 6. [Dependências](#dependências)
+7. [Guia de Uso do Aplicativo](#guia-de-uso-do-aplicativo)
 
 ## 📌 Descrição do Projeto
 
@@ -112,3 +113,58 @@ dependencies:
   shared_preferences: ^2.5.3
   table_calendar: ^3.0.9
 ```
+
+## 🧑 Guia de Uso do Aplicativo
+
+Este guia apresenta, de forma clara e objetiva, como utilizar cada funcionalidade do aplicativo **Habit Tracker**, desde o cadastro de hábitos até a análise estatística de desempenho.
+
+### Tela Inicial – Lista de Hábitos
+
+Ao abrir o aplicativo, você verá a **lista de hábitos cadastrados**. Cada hábito é exibido com seu nome e um botão de acesso à sua **página detalhada**.
+
+**O que você pode fazer?**
+
+- Ver todos os seus hábitos
+- Clicar sobre um hábito para abrir sua página detalhada
+- Adicionar um novo hábito tocando no botão de "+"
+- Editar o nome de um hábito tocando no ícone de lápis ao lado de seu nome
+- Excluir um hábito tocando no ícone de lixeira ao lado de seu nome
+
+### Criar Novo Hábito
+
+Ao tocar no botão de **"+"**, você será direcionado à tela de **criação de um novo hábito**.
+
+**Como usar:**
+
+1. Digite o nome do novo hábito (ex: "Ler", "Fazer exercícios").
+2. Confirme a criação pressionando o botão de "Adicionar".
+
+> O hábito será adicionado automaticamente à lista principal.
+
+### Página do Hábito
+
+Ao tocar em qualquer hábito da lista, você acessa sua **página individual**. Nela você poderá **registrar** a realização diária e visualizar um **resumo estatístico**.
+
+Aqui você pode:
+
+**Marcar dias realizados**
+
+- Use o **calendário interativo** para marcar ou desmarcar um dia específico como **realizado**.
+- Basta **tocar na data** desejada para alternar o status.
+
+**Navegação por dias**
+
+- Use as **setas do calendário** para navegar entre os meses e visualizar o histórico.
+
+### Estatísticas do Hábito
+
+Abaixo do calendário, a página do hábito mostra um resumo da sua frequência de realização:
+
+- **Última semana**: Total de dias marcados nos últimos 7 dias.
+- **Último mês**: Total de dias marcados nos últimos 30 dias.
+- **Último ano**: Total de dias marcados nos últimos 365 dias.
+- **Desde sempre**: Total absoluto de dias registrados.
+
+### Salvamento Automático
+
+Todas as suas interações (criar hábito, marcar dias, etc.) são **salvas automaticamente** no dispositivo. Você não precisa se preocupar com salvar manualmente.
