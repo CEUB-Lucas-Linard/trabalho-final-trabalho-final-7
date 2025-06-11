@@ -59,19 +59,19 @@ O projeto segue uma estrutura modular e utiliza o **Provider** para gerenciament
 
 ```plaintext
 lib/
-├── main.dart                  # Ponto de entrada
-├── app.dart                   # MaterialApp e rotas
+├── main.dart                           # Ponto de entrada
 ├── src/
+│   ├── app.dart                        # MaterialApp e rotas
 │   ├── models/
-│   │   └── habit.dart         # Modelo do hábito
+│   │   └── habit.dart                  # Modelo do hábito
 │   ├── providers/
-│   │   └── habit_provider.dart # Lógica e estado dos hábitos
+│   │   └── habit_provider.dart         # Lógica e estado dos hábitos
 │   ├── screens/
-│   │   ├── home_screen.dart        # Tela principal com lista de hábitos
-│   │   ├── new_habit_screen.dart   # Tela de criação de hábito
-│   │   └── habit_detail_screen.dart # Tela individual de cada hábito
+│   │   ├── home_screen.dart            # Tela principal com lista de hábitos
+│   │   ├── new_habit_screen.dart       # Tela de criação de hábito
+│   │   └── habit_detail_screen.dart    # Tela individual de cada hábito
 │   └── utils/
-│       └── storage_util.dart       # Persistência com SharedPreferences
+│       └── storage_util.dart           # Persistência com SharedPreferences
 ```
 
 ## 💻 Instalação e Execução Local
